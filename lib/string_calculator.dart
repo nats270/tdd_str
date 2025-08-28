@@ -9,6 +9,7 @@ class StringCalculator {
       final match = RegExp(r'^//(.+)\n').firstMatch(nums);
       if (match != null) {
         final delim = match.group(1)!;
+        // set pattern to the custom delimiter (escape for RegExp)
         delimPattern = RegExp.escape(delim);
         nums = nums.substring(match.end);
       }
