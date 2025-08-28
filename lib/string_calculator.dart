@@ -14,11 +14,14 @@ class StringCalculator {
       }
     }
 
-    final parts = nums.split(RegExp(delimPattern));
-    if (parts.length == 1) {
-      final n = int.tryParse(parts.first);
-      if (n != null) return n;
+    final parts = nums.split(RegExp(delimPattern)).where((s) => s.isNotEmpty).toList();
+    final ints = parts.map(int.parse).toList();
+
+    final negatives = ints.where((n) => n < 0).toList();
+    if (negatives.isNotEmpty) {
+      throw ArgumentError('negatives not allowed: ${negatives.join(', ')}');
     }
-    return parts.map(int.parse).fold(0, (sum, n) => sum + n);
+
+    return ints.fold(0, (sum, n) => sum + n);
   }
 }
