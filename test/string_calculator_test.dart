@@ -18,4 +18,8 @@ void main() {
   test('multiple numbers', () {
     expect(StringCalculator.add('1,2,3,4'), equals(10));
   });
+
+  test('handles newlines as delimiters', () {
+    expect(StringCalculator.add('1\n2,3'), equals(6));
+  });
 }
