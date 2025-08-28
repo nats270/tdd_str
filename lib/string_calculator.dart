@@ -2,12 +2,14 @@ class StringCalculator {
   static int add(String numbers) {
     if (numbers.isEmpty) return 0;
 
-    if (!numbers.contains(',')) {
-      final n = int.tryParse(numbers);
+    final cleaned = numbers.replaceAll('\n', ',');
+
+    if (!cleaned.contains(',')) {
+      final n = int.tryParse(cleaned);
       if (n != null) return n;
     }
 
-    final parts = numbers.split(',');
-    return parts.map(int.parse).reduce((a, b) => a + b);
+    final parts = cleaned.split(',');
+    return parts.map(int.parse).fold(0, (sum, n) => sum + n);
   }
 }
