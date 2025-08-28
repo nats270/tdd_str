@@ -22,4 +22,9 @@ void main() {
   test('handles newlines as delimiters', () {
     expect(StringCalculator.add('1\n2,3'), equals(6));
   });
+
+  test('custom delimiter', () {
+    expect(StringCalculator.add('//;\n1;2'), equals(3));
+  });
+
 }
