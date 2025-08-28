@@ -14,4 +14,8 @@ void main() {
   test('two numbers comma-separated', () {
     expect(StringCalculator.add('1,5'), equals(6));
   });
+
+  test('multiple numbers', () {
+    expect(StringCalculator.add('1,2,3,4'), equals(10));
+  });
 }
