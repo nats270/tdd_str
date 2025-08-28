@@ -27,4 +27,13 @@ void main() {
     expect(StringCalculator.add('//;\n1;2'), equals(3));
   });
 
+  test('negative numbers throw with all negatives listed', () {
+    expect(
+          () => StringCalculator.add('1,-2,3,-4'),
+      throwsA(predicate((e) =>
+      e is ArgumentError &&
+          e.message == 'negatives not allowed: -2, -4'
+      )),
+    );
+  });
 }
